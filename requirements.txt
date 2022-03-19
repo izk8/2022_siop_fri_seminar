@@ -1,0 +1,11 @@
+# basics data analysis et.c 
+wheel
+pandas
+sklearn
+
+# dl stuff
+sentence-transformers
+bertopic
+
+# to time stuff
+ipython-autotime
