@@ -4,6 +4,20 @@
 
 # Additional Resources
 
+## Useful Packages for R
+* Tidyverse (Suite of tools for data wrangling and manipulation)
+* Tidymodels (Suite of tools for using ML models within the tidyverse)
+* Caret (ML models)
+* Psych (statistics commonly used in psychology)
+* Swirl (to learn R)
+
+## Useful Packages for Python
+
+* SKLearn (ML models, this package has excellent documentation as well)
+* Pandas (used for data manipulation in python)
+* numpy (package that contains mathematical functions needed for ML) 
+
+
 ## Additional Programming Languages and Analysis Tools
 
 During the seminar, we shared coding examples and details on both R and Python. Here are some other programming languages and tools that are sometimes used for machine learning.
@@ -31,3 +45,22 @@ Common vendors include:
 * Microsoft Azure
 * IBM Watson
 * Amazon Web Services (AWS)
+
+## Resources for in depth self-guided study
+* Online Courses
+  * Python for Data Science and Machine Learning Bootcamp
+  * Swirl - R package to learn R
+  * Codecademy - Introduction to Python
+  * Coursera - Andrew Ng
+    * AI for Everyone 
+    * Machine Learning 
+    * Deep Learning Specialization
+* Websites, podcasts, and books
+  * Towards Data Science (website)
+  * An Introduction to Statistical Learning with Applications in R (book)
+  * Artificial Intelligence: A Modern Approach - Peter Norvig (book)
+  * Super Data Science (podcast)
+  * Practical AI (podcast)
+  * 3Blue1Brown (youtube)
+  * Two Minute Papers (youtube)
+
