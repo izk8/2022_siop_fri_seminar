@@ -11,6 +11,11 @@
 * Psych (statistics commonly used in psychology)
 * Swirl (to learn R)
 
+## Tidymodeling
+There are a ton of great resources for learning tidymodeling. I highly suggest you try out the following to get you started.
+* https://www.tidymodels.org/
+* https://www.tmwr.org/
+
 ## Useful Packages for Python
 
 * SKLearn (ML models, this package has excellent documentation as well)

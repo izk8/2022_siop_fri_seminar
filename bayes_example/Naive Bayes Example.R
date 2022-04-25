@@ -22,10 +22,10 @@ require(klaR) # Contains the engine for naive_Bayes
 # Data -----------------------------------------------------------------------------------------------------------------
 
 # Read in dataset
-data_frame_full <- read_rds("C:/Users/degov/Google Drive/SIOP 2022 ML Seminar/scottscrap/Data.RDS")
+data_frame_full <- read_rds("")
 
 # The only real data processing step here is to ensure our performance category is a factor
-factor(data_frame_full$Performance_Category) -> data_frame_full$Performance_Category
+data_frame_full$Performance_Category <- factor(data_frame_full$Performance_Category)
 
 # Split data into Training and Testing sets. The goal here is to take a majority of data and put it into a training dataset.
 # We will use some re-sampling in order to try and establish a good statistical model without over-fitting but we will need to
@@ -131,7 +131,7 @@ final_naive_bayes_fit <-
 
 # For evaluation purposes we first need to "augment" our data. This uses the fit model to generate new classes as
 # probabilities and appends them to our dataset.
-augment(final_naive_bayes_fit, new_data = test_data) -> naive_bayes_augmented
+naive_bayes_augmented <- augment(final_naive_bayes_fit, new_data = test_data)
 
 # We can pull in a confusion matrix in order to see how well we predict in our testing dataset
 conf_mat(naive_bayes_augmented, truth = Performance_Category, estimate = .pred_class)
@@ -139,7 +139,7 @@ conf_mat(naive_bayes_augmented, truth = Performance_Category, estimate = .pred_c
 # We can also assess the accuracy of the classification
 accuracy(naive_bayes_augmented, truth = Performance_Category, estimate = .pred_class)
 
-# Overall, our accuracy in prediction is around 0.468 which isn't that great. Perhaps we should try other models?
+# Overall, our accuracy in prediction is around 0.464 which isn't that great. Perhaps we should try other models?
 
 
 # Naive Bayes vs Linear Discriminant Analysis in Small n Samples -------------------------------------------------------
@@ -180,17 +180,17 @@ lda_fit <-
   fit(data = train_data)
 
 # Check how well it predicts the class membership
-augment(lda_fit, new_data = test_data) -> lda_augmented
+lda_augmented <- augment(lda_fit, new_data = test_data)
 conf_mat(lda_augmented, truth = Performance_Category, estimate = .pred_class)
 accuracy(lda_augmented, truth = Performance_Category, estimate = .pred_class)
 
 # Now let's compare that to our Bayes. Because we already fit the model we just need to predict and can use the full dataset!
-augment(final_naive_bayes_fit, new_data = low_n_testing) -> naive_bayes_augmented
+naive_bayes_augmented <- augment(final_naive_bayes_fit, new_data = low_n_testing)
 conf_mat(naive_bayes_augmented, truth = Performance_Category, estimate = .pred_class)
 accuracy(naive_bayes_augmented, truth = Performance_Category, estimate = .pred_class)
 
 # But, Let's be fair and check it versus the smaller holdback sample
-augment(final_naive_bayes_fit, new_data = test_data) -> naive_bayes_augmented
+naive_bayes_augmented <- augment(final_naive_bayes_fit, new_data = test_data)
 conf_mat(naive_bayes_augmented, truth = Performance_Category, estimate = .pred_class)
 accuracy(naive_bayes_augmented, truth = Performance_Category, estimate = .pred_class)
 
@@ -233,17 +233,17 @@ lda_fit <-
   fit(data = train_data)
 
 # Check how well it predicts the class membership
-augment(lda_fit, new_data = test_data) -> lda_augmented
+lda_augmented <- augment(lda_fit, new_data = test_data)
 conf_mat(lda_augmented, truth = Performance_Category, estimate = .pred_class)
 accuracy(lda_augmented, truth = Performance_Category, estimate = .pred_class)
 
 # Now let's compare that to our Bayes. Because we already fit the model we just need to predict and can use the full dataset!
-augment(final_naive_bayes_fit, new_data = large_n_testing) -> naive_bayes_augmented
+naive_bayes_augmented <- augment(final_naive_bayes_fit, new_data = large_n_testing)
 conf_mat(naive_bayes_augmented, truth = Performance_Category, estimate = .pred_class)
 accuracy(naive_bayes_augmented, truth = Performance_Category, estimate = .pred_class)
 
 # But, Let's be fair and check it versus the smaller holdback sample
-augment(final_naive_bayes_fit, new_data = test_data) -> naive_bayes_augmented
+naive_bayes_augmented <- augment(final_naive_bayes_fit, new_data = test_data)
 conf_mat(naive_bayes_augmented, truth = Performance_Category, estimate = .pred_class)
 accuracy(naive_bayes_augmented, truth = Performance_Category, estimate = .pred_class)
 
@@ -259,7 +259,8 @@ accuracy(naive_bayes_augmented, truth = Performance_Category, estimate = .pred_c
 # However, there may be better models out there for these classification problems!
 
 # 1) Is Naive Bayes the correct approach to take here? Try fitting a random forest model and see if you can increase
-# prediction. Hint, rand_forest() %>% set_engine("ranger") %>% set_mode("classification") to get you started.
+# prediction. Hint, rand_forest() %>% set_engine("ranger") %>% set_mode("classification") to get you started. Once you are
+# done check out our github for the answer!
 
 # 2) We absolutely violated the independent predictor assumption of this model. Are there other models we could use or
 # parameters we could change in this model to help it fit better?
@@ -310,7 +311,7 @@ final_naive_bayes_fit <-
   final_naive_bayes_workflow %>%
   fit(data = train_data)
 
-augment(final_naive_bayes_fit, new_data = test_data) -> naive_bayes_augmented
+naive_bayes_augmented <- augment(final_naive_bayes_fit, new_data = test_data)
 conf_mat(naive_bayes_augmented, truth = Performance_Category, estimate = .pred_class)
 accuracy(naive_bayes_augmented, truth = Performance_Category, estimate = .pred_class)
 
