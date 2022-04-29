@@ -1,7 +1,7 @@
 import pandas as pd
 
 # read in the data, shorten, and select
-df = pd.read_json("/home/isaac/work/2022_SIOP_Fri_Seminar/data/indeed_com-indeed_com_usa_jobs__20200101_20200331_deduped_n_merged_20201027_043720103677161.ldjson", lines=True)
+df = pd.read_json("raw_data_here.json", lines=True)
 df = df[:10000] # shorten it for demo purposes
 df = df[['job_title','category','job_description']]
 df
