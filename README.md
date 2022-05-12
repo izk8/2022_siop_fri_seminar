@@ -2,6 +2,10 @@
 
 **Thanks for attending this seminar! This Github contains additional resources for you along with the code from today's session.**
 
+# Session Recording
+
+https://vimeo.com/707933519/c6651aeb79
+
 # Additional Resources
 
 ## Useful Packages for R
